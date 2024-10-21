@@ -1,0 +1,392 @@
+.MODEL JJMOD JJ(RTYPE=1, VG=2.8MV, CAP=0.064PF, R0=100OHM, RN=17OHM, ICRIT=0.1MA)
+
+
+*** bfr 	['a', 'din', 'dout', 'q', 'xin', 'xout']
+Xbfr_9	bfr 	54  	52  	58  	73  	50  	56  	
+Xbfr_11	bfr 	54  	58  	66  	79  	56  	89  	
+Xbfr_0	bfr 	67  	78  	72  	99  	69  	75  	
+Xbfr_10	bfr 	73  	84  	78  	85  	75  	81  	
+Xbfr_12	bfr 	79  	90  	84  	92  	81  	109  	
+Xbfr_1	bfr 	99  	103  	111  	113  	121  	102  	
+Xbbbb_	bfr 	119  	123  	129  	0  	121  	127  	
+Xbfr_2	bfr 	125  	129  	136  	131  	127  	146  	
+Xbfr_3	bfr 	131  	142  	136  	143  	133  	139  	
+Xbfr_6	bfr 	137  	147  	142  	149  	139  	158  	
+Xbfr_4	bfr 	143  	147  	153  	155  	152  	146  	
+Xbfr_7	bfr 	149  	153  	160  	161  	0  	152  	
+Xbfr_5	bfr 	155  	166  	160  	0  	164  	158  	
+Xbfr_8	bfr 	161  	0  	166  	0  	0  	164  	
+
+*** and_bb 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_05_ 	and_bb 	41  	42  	39  	46  	67  	37  	44  	
+
+*** and_bi 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_08_ 	and_bi 	85  	93  	90  	97  	112  	96  	89  	
+Xn_10_ 	and_bi 	105  	112  	118  	111  	0  	116  	109  	
+
+*** or_bb 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_06_ 	or_bb 	41  	42  	46  	52  	61  	44  	50  	
+Xn_07_ 	or_bb 	67  	61  	72  	66  	93  	63  	69  	
+Xn_11_ 	or_bb 	112  	113  	123  	118  	119  	133  	116  	
+
+*** or_bi 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_09_ 	or_bi 	92  	93  	97  	103  	105  	102  	96  	
+
+
+V_a 			22  	0  	PWL(0ps 0mV 1ps -5mV 20ps -5mV  	21ps -5mV 220ps -5mV 	221ps -5mV 420ps -5mV 	421ps 5mV 620ps 5mV 	621ps 5mV 820ps 5mV 	)
+V_b 			24  	0  	PWL(0ps 0mV 1ps -5mV 20ps -5mV  	21ps -5mV 220ps -5mV 	221ps 5mV 420ps 5mV 	421ps -5mV 620ps -5mV 	621ps 5mV 820ps 5mV 	)
+V_c 			26  	0  	PWL(0ps 0mV 1ps -5mV 20ps -5mV  	21ps -5mV 220ps -5mV 	221ps -5mV 420ps -5mV 	421ps -5mV 620ps -5mV 	621ps -5mV 820ps -5mV 	)
+V_xinI 			28  	0  	SIN (0 800mV 5GHz 100ps 0 )
+V_xinII 			0  	30  	SIN (0 800mV 5GHz 150ps 0 )
+V_din 			32  	0  	PWL ( 0ps 0mv 20ps 1200mV )
+R_a 			22  	42  	1000.0ohm
+R_b 			24  	41  	1000.0ohm
+R_c 			26  	54  	1000.0ohm
+R_xinI 			28  	37  	1000.0ohm
+R_xinII 			30  	63  	1000.0ohm
+R_din 			32  	39  	1000.0ohm
+
+
+.tran 0.2ps 2000ps 0ps
+.print devi Lip.XI3.Xn_05_
+
+*** const0
+.subckt const0          1          2          3          4          5
+***       din      dout         q       xin      xout
+Kxout              Lx       Lout -0.000
+Kd1                Ld         L1 -0.128
+Kxq                Lx         Lq -0.004
+Kdout              Ld       Lout -0.000
+Kxd                Lx         Ld 0.193
+Kdq                Ld         Lq -0.005
+Kd2                Ld         L2 -0.135
+Kx1                Lx         L1 -0.185
+Kx2                Lx         L2 -0.189
+Kout               Lq       Lout -0.495
+Ld                 1         2   7.490pH fcheck
+Lx                 4         5   7.470pH fcheck
+L1                 6         7   1.560pH fcheck
+L2                 8         6   1.660pH fcheck
+Lout               9         3  31.200pH fcheck
+Lq                 6         0   7.820pH fcheck
+R1                 9         0   1.000pohm
+B2                 8         0  jjmod area=0.50
+B1                 7         0  jjmod area=0.50
+.ends
+
+*** bfr
+.subckt bfr         10          1          2          3          4          5
+***         a       din      dout         q       xin      xout
+Kxout              Lx       Lout 0.000
+Kd1                Ld         L1 -0.133
+Kxq                Lx         Lq 0.000
+Kdout              Ld       Lout 0.000
+Kxd                Lx         Ld 0.190
+Kdq                Ld         Lq 0.000
+Kd2                Ld         L2 -0.133
+Kx1                Lx         L1 -0.186
+Kx2                Lx         L2 -0.186
+Kout               Lq       Lout -0.495
+Ld                 1         2   7.450pH fcheck
+Lx                 4         5   7.400pH fcheck
+Lin               10         6   1.230pH fcheck
+L1                 6         7   1.590pH fcheck
+L2                 8         6   1.590pH fcheck
+Lout               9         3  31.200pH fcheck
+Lq                 6         0   7.920pH fcheck
+R1                 9         0   1.000pohm
+B2                 8         0  jjmod area=0.50
+B1                 7         0  jjmod area=0.50
+.ends
+
+*** branch3
+.subckt branch3         10         11         12         13
+***         a         b         c         d
+Lip                8        13   0.315pH fcheck
+Lp3               12        14  12.000pH fcheck
+Lp2               11         8  10.400pH fcheck
+Lp1               10        15  12.000pH fcheck
+R0                15         8   1.000pohm
+R1                14         8   1.000pohm
+.ends
+
+*** and_bb
+.subckt and_bb         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI1            const0         16         17         18         19         20
+XI2               bfr         11         17          2         21         20          5
+XI0               bfr         10          1         16         22          4         19
+XI3           branch3         22         18         21          3
+.ends
+
+*** inv
+.subckt inv         10          1          2          3          4          5
+***         a       din      dout         q       xin      xout
+Kxout              Lx       Lout 0.000
+Kd1                Ld         L1 -0.133
+Kxq                Lx         Lq 0.000
+Kdout              Ld       Lout 0.000
+Kxd                Lx         Ld 0.190
+Kdq                Ld         Lq 0.000
+Kd2                Ld         L2 -0.133
+Kx1                Lx         L1 -0.186
+Kx2                Lx         L2 -0.186
+Kout               Lq       Lout 0.432
+Ld                 1         2   7.440pH fcheck
+Lx                 4         5   7.390pH fcheck
+Lin               10         6   1.240pH fcheck
+L1                 6         7   1.590pH fcheck
+L2                 8         6   1.590pH fcheck
+Lout               9         3  31.000pH fcheck
+Lq                 6         0   6.490pH fcheck
+R1                 9         0   1.000pohm
+B2                 8         0  jjmod area=0.60
+B1                 7         0  jjmod area=0.60
+.ends
+
+*** and_bi
+.subckt and_bi         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI2               inv         11         17          2         21         20          5
+XI0               bfr         10          1         16         22          4         19
+XI1            const0         16         17         23         19         20
+XI3           branch3         22         23         21          3
+.ends
+
+*** and_ib
+.subckt and_ib         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI3           branch3         22         16         21          3
+XI0               inv         10          1         23         22          4         19
+XI2               bfr         11         17          2         21         20          5
+XI1            const0         23         17         16         19         20
+.ends
+
+*** and_ii
+.subckt and_ii         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI1            const0         16         17         18         19         20
+XI2               inv         11         17          2         21         20          5
+XI0               inv         10          1         16         22          4         19
+XI3           branch3         22         18         21          3
+.ends
+
+*** const1
+.subckt const1          1          2          3          4          5
+***       din      dout         q       xin      xout
+L1                 4        22   0.010pH fcheck
+L2                24         5   0.010pH fcheck
+L3                 1        25   0.010pH fcheck
+L4                26         2   0.010pH fcheck
+XI0            const0         26         25          3         24         22
+.ends
+
+*** or_bb
+.subckt or_bb         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI1            const1         27         17         16         19         20
+XI2               bfr         11         17          2         21         20          5
+XI0               bfr         10          1         27         22          4         19
+XI3           branch3         22         16         21          3
+.ends
+
+*** or_bi
+.subckt or_bi         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI3           branch3         22         16         21          3
+XI1            const1         27         17         16         19         20
+XI2               inv         11         17          2         21         20          5
+XI0               bfr         10          1         27         22          4         19
+.ends
+
+*** or_ib
+.subckt or_ib         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI3           branch3         22         16         21          3
+XI1            const1         27         17         16         19         20
+XI0               inv         10          1         27         22          4         19
+XI2               bfr         11         17          2         21         20          5
+.ends
+
+*** or_ii
+.subckt or_ii         10         11          1          2          3          4          5
+***         a         b       din      dout         q       xin      xout
+XI1            const1         27         17         16         19         20
+XI2               inv         11         17          2         21         20          5
+XI0               inv         10          1         27         22          4         19
+XI3           branch3         22         16         21          3
+.ends
+
+*** dummy_half
+.subckt dummy_half          1          2          4          5
+***       din      dout       xin      xout
+C0                 5         0   0.001pF
+L1                 1         2   0.001pH fcheck
+L0                 4         5   3.660pH fcheck
+.ends
+
+*** branch2
+.subckt branch2         10         11         12
+***         a         b         c
+Lip                8        12   0.270pH fcheck
+Lp2               11        14  11.100pH fcheck
+Lp1               10        15  11.100pH fcheck
+R0                15         8   1.000pohm
+R1                14         8   1.000pohm
+.ends
+
+*** spl2
+.subckt spl2         10          1          2         28          4          5         29
+***         a       din      dout         x       xin      xout         y
+XI12       dummy_half          1         19          4         30
+XI13       dummy_half         20          2         18          5
+XI1           branch2         28         29         22
+XI0               bfr         10         19         20         22         30         18
+.ends
+
+*** dummy
+.subckt dummy          1          2          4          5
+***       din      dout       xin      xout
+C0                 5         0   0.003pF
+L1                 1         2   0.001pH fcheck
+L0                 4         5   6.840pH fcheck
+.ends
+
+*** spl3
+.subckt spl3         10          1          2         28          4          5         29         31
+***         a       din      dout         x       xin      xout         y         z
+XI1           branch3         28         29         31         22
+XI12            dummy          1         19          4         30
+XI13            dummy         20          2         18          5
+XI0               bfr         10         19         20         22         30         18
+.ends
+
+*** spl3L
+.subckt spl3L         10          1          2         28          4          5         29         31
+***         a       din      dout         x       xin      xout         y         z
+XI1           branch3         28         29         31         22
+XI12            dummy          1         19          4         30
+XI13            dummy         20          2         18          5
+XI0               bfr         10         19         20         22         30         18
+.ends
+
+*** bfrL
+.subckt bfrL         10          1          2          3          4          5
+***         a       din      dout         q       xin      xout
+Kxout              Lx       Lout 0.000
+Kd1                Ld         L1 -0.135
+Kxq                Lx         Lq 0.000
+Kdout              Ld       Lout 0.000
+Kxd                Lx         Ld 0.192
+Kdq                Ld         Lq 0.000
+Kd2                Ld         L2 -0.135
+Kx1                Lx         L1 -0.187
+Kx2                Lx         L2 -0.187
+Kout               Lq       Lout -0.495
+Ld                 1         2   7.430pH fcheck
+Lx                 4         5   7.380pH fcheck
+Lin               10         6   1.240pH fcheck
+L1                 6         7   1.590pH fcheck
+L2                 8         6   1.590pH fcheck
+Lout               9         3  31.100pH fcheck
+Lq                 6         0   7.920pH fcheck
+R1                 9         0   1.000pohm
+B2                 8         0  jjmod area=1.00
+B1                 7         0  jjmod area=1.00
+.ends
+
+*** branch4
+.subckt branch4         10         11         12         13         32
+***         a         b         c         d         e
+Lip               33        32   0.554pH fcheck
+Lp3               12        14  10.800pH fcheck
+Lp2               11         8  10.800pH fcheck
+Lp1               10        34  12.600pH fcheck
+Lp4               13        35  12.600pH fcheck
+R0                34         8   1.000pohm
+R1                 8        33   1.000pohm
+R2                14        33   1.000pohm
+R3                35        14   1.000pohm
+.ends
+
+*** spl4L
+.subckt spl4L         10          1          2         36         28          4          5         29         31
+***         a       din      dout         w         x       xin      xout         y         z
+XI0              bfrL         10         37         38         22         27         39
+XI15            dummy         38         20         39         18
+XI14            dummy         40         37         16         27
+XI1           branch4         36         28         29         31         22
+XI16       dummy_half          1         40          4         16
+XI17       dummy_half         20          2         18          5
+.ends
+
+*** maj_bbb
+.subckt maj_bbb         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI3           branch3         22         17         27          3
+XI2               bfr         12         37          2         27         20          5
+XI1               bfr         11         16         37         17         19         20
+XI0               bfr         10          1         16         22          4         19
+.ends
+
+*** maj_bbi
+.subckt maj_bbi         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI1               bfr         11         16         17         18         19         20
+XI0               bfr         10          1         16         22          4         19
+XI2               inv         12         17          2         27         20          5
+XI3           branch3         22         18         27          3
+.ends
+
+*** maj_bib
+.subckt maj_bib         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI2               bfr         12         18          2         27         20          5
+XI0               bfr         10          1         16         22          4         19
+XI3           branch3         22         17         27          3
+XI1               inv         11         16         18         17         19         20
+.ends
+
+*** maj_bii
+.subckt maj_bii         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI0               bfr         10          1         16         22          4         19
+XI2               inv         12         37          2         27         20          5
+XI1               inv         11         16         37         17         19         20
+XI3           branch3         22         17         27          3
+.ends
+
+*** maj_ibb
+.subckt maj_ibb         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI0               inv         10          1         16         22          4         19
+XI2               bfr         12         37          2         27         20          5
+XI1               bfr         11         16         37         17         19         20
+XI3           branch3         22         17         27          3
+.ends
+
+*** maj_ibi
+.subckt maj_ibi         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI2               inv         12         18          2         27         20          5
+XI0               inv         10          1         16         22          4         19
+XI1               bfr         11         16         18         17         19         20
+XI3           branch3         22         17         27          3
+.ends
+
+*** maj_iii
+.subckt maj_iii         10         11         12          1          2          3          4          5
+***         a         b         c       din      dout         q       xin      xout
+XI3           branch3         22         17         27          3
+XI2               inv         12         37          2         27         20          5
+XI1               inv         11         16         37         17         19         20
+XI0               inv         10          1         16         22          4         19
+.ends
+
+*** top cell: JJ_test
+
+*** netlist file ***
+
+*** jsim input file ***
+
+*** jsim input file ***

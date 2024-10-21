@@ -1,0 +1,35 @@
+.MODEL JJMOD JJ(RTYPE=1, VG=2.8MV, CAP=0.064PF, R0=100OHM, RN=17OHM, ICRIT=0.1MA)
+
+
+*** bfr 	['a', 'din', 'dout', 'q', 'xin', 'xout']
+Xbfr_9	bfr 	a: c  	din: wr_dc_2  	dout: wr_dc_3  	q: w_bfr_9  	xin: wr_acI_2  	xout: wr_acI_3  	*** lv: 0
+Xbfr_11	bfr 	a: c  	din: wr_dc_3  	dout: wr_dc_4  	q: w_bfr_11  	xin: wr_acI_3  	xout: wr_acI_4  	*** lv: 0
+Xbfr_0	bfr 	a: n_01_  	din: wr_dc_6  	dout: wr_dc_5  	q: w_bfr_0  	xin: wr_acII_1  	xout: wr_acII_2  	*** lv: 1
+Xbfr_10	bfr 	a: w_bfr_9  	din: wr_dc_7  	dout: wr_dc_6  	q: w_bfr_10  	xin: wr_acII_2  	xout: wr_acII_3  	*** lv: 1
+Xbfr_12	bfr 	a: w_bfr_11  	din: wr_dc_8  	dout: wr_dc_7  	q: w_bfr_12  	xin: wr_acII_3  	xout: wr_acII_4  	*** lv: 1
+Xbfr_1	bfr 	a: w_bfr_0  	din: wr_dc_10  	dout: wr_dc_11  	q: w_bfr_1  	xin: wr_acI_7  	xout: wr_acI_6  	*** lv: 2
+Xbbbb_	bfr 	a: n_12_  	din: wr_dc_13  	dout: wr_dc_14  	q: cout  	xin: wr_acI_7  	xout: wr_acI_8  	*** lv: 4
+Xbfr_2	bfr 	a: s  	din: wr_dc_14  	dout: wr_dc_15  	q: w_bfr_2  	xin: wr_acI_8  	xout: wr_acI_9  	*** lv: 4
+Xbfr_3	bfr 	a: w_bfr_2  	din: wr_dc_16  	dout: wr_dc_15  	q: w_bfr_3  	xin: wr_acII_6  	xout: wr_acII_7  	*** lv: 5
+Xbfr_6	bfr 	a: cout  	din: wr_dc_17  	dout: wr_dc_16  	q: w_bfr_6  	xin: wr_acII_7  	xout: wr_acII_8  	*** lv: 5
+Xbfr_4	bfr 	a: w_bfr_3  	din: wr_dc_17  	dout: wr_dc_18  	q: w_bfr_4  	xin: wr_acI_10  	xout: wr_acI_9  	*** lv: 6
+Xbfr_7	bfr 	a: w_bfr_6  	din: wr_dc_18  	dout: wr_dc_19  	q: w_bfr_7  	xin: wr_acI_11  	xout: wr_acI_10  	*** lv: 6
+Xbfr_5	bfr 	a: w_bfr_4  	din: wr_dc_20  	dout: wr_dc_19  	q: w_bfr_5  	xin: wr_acII_9  	xout: wr_acII_8  	*** lv: 7
+Xbfr_8	bfr 	a: w_bfr_7  	din: wr_dc_21  	dout: wr_dc_20  	q: w_bfr_8  	xin: wr_acII_10  	xout: wr_acII_9  	*** lv: 7
+
+*** and_bb 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_05_ 	and_bb 	a: b  	b: a  	din: wr_dc_0  	dout: wr_dc_1  	q: n_01_  	xin: wr_acI_0  	xout: wr_acI_1  	*** lv: 0
+
+*** and_bi 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_08_ 	and_bi 	a: w_bfr_10  	b: n_03_  	din: wr_dc_8  	dout: wr_dc_9  	q: n_04_  	xin: wr_acI_5  	xout: wr_acI_4  	*** lv: 2
+Xn_10_ 	and_bi 	a: n_00_  	b: n_04_  	din: wr_dc_12  	dout: wr_dc_11  	q: s  	xin: wr_acII_5  	xout: wr_acII_4  	*** lv: 3
+
+*** or_bb 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_06_ 	or_bb 	a: b  	b: a  	din: wr_dc_1  	dout: wr_dc_2  	q: n_02_  	xin: wr_acI_1  	xout: wr_acI_2  	*** lv: 0
+Xn_07_ 	or_bb 	a: n_01_  	b: n_02_  	din: wr_dc_5  	dout: wr_dc_4  	q: n_03_  	xin: wr_acII_0  	xout: wr_acII_1  	*** lv: 1
+Xn_11_ 	or_bb 	a: n_04_  	b: w_bfr_1  	din: wr_dc_13  	dout: wr_dc_12  	q: n_12_  	xin: wr_acII_6  	xout: wr_acII_5  	*** lv: 3
+
+*** or_bi 	['a', 'b', 'din', 'dout', 'q', 'xin', 'xout']
+Xn_09_ 	or_bi 	a: w_bfr_12  	b: n_03_  	din: wr_dc_9  	dout: wr_dc_10  	q: n_00_  	xin: wr_acI_6  	xout: wr_acI_5  	*** lv: 2
+
+

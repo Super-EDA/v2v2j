@@ -1,0 +1,130 @@
+digraph {
+	{
+		rank=same
+		R_a
+		R_b
+		R_c
+		R_xinI
+		R_xinII
+		R_din
+	}
+	{
+		rank=same
+		"n_05_ "
+		"n_06_ "
+		bfr_9 [color=lightgreen style=filled]
+		bfr_11 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		"n_07_ "
+		bfr_0 [color=lightgreen style=filled]
+		bfr_10 [color=lightgreen style=filled]
+		bfr_12 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		"n_08_ "
+		"n_09_ "
+		bfr_1 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		"n_10_ "
+		"n_11_ "
+	}
+	{
+		rank=same
+		bbbb_ [color=lightgreen style=filled]
+		bfr_2 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		bfr_3 [color=lightgreen style=filled]
+		bfr_6 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		bfr_4 [color=lightgreen style=filled]
+		bfr_7 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		bfr_5 [color=lightgreen style=filled]
+		bfr_8 [color=lightgreen style=filled]
+	}
+	{
+		rank=same
+		cout
+		s
+	}
+	R_a -> "n_05_ " [label=a fontsize=8]
+	R_a -> "n_06_ " [label=a fontsize=8]
+	R_b -> "n_05_ " [label=b fontsize=8]
+	R_b -> "n_06_ " [label=b fontsize=8]
+	R_c -> bfr_9 [label=c fontsize=8]
+	R_c -> bfr_11 [label=c fontsize=8]
+	"n_05_ " -> "n_07_ " [label=n_01_ fontsize=8]
+	"n_05_ " -> bfr_0 [label=n_01_ fontsize=8]
+	"n_06_ " -> "n_07_ " [label=n_02_ fontsize=8]
+	bfr_9 -> bfr_10 [label=w_bfr_9 fontsize=8]
+	bfr_11 -> bfr_12 [label=w_bfr_11 fontsize=8]
+	"n_07_ " -> "n_08_ " [label=n_03_ fontsize=8]
+	"n_07_ " -> "n_09_ " [label=n_03_ fontsize=8]
+	bfr_0 -> bfr_1 [label=w_bfr_0 fontsize=8]
+	bfr_10 -> "n_08_ " [label=w_bfr_10 fontsize=8]
+	bfr_12 -> "n_09_ " [label=w_bfr_12 fontsize=8]
+	"n_08_ " -> "n_10_ " [label=n_04_ fontsize=8]
+	"n_08_ " -> "n_11_ " [label=n_04_ fontsize=8]
+	"n_09_ " -> "n_10_ " [label=n_00_ fontsize=8]
+	bfr_1 -> "n_11_ " [label=w_bfr_1 fontsize=8]
+	"n_10_ " -> bfr_2 [label=s fontsize=8]
+	"n_11_ " -> bbbb_ [label=n_12_ fontsize=8]
+	bbbb_ -> bfr_6 [label=cout fontsize=8]
+	bfr_2 -> bfr_3 [label=w_bfr_2 fontsize=8]
+	bfr_3 -> bfr_4 [label=w_bfr_3 fontsize=8]
+	bfr_6 -> bfr_7 [label=w_bfr_6 fontsize=8]
+	bfr_4 -> bfr_5 [label=w_bfr_4 fontsize=8]
+	bfr_7 -> bfr_8 [label=w_bfr_7 fontsize=8]
+	bfr_5 -> s [label=w_bfr_5 fontsize=8]
+	bfr_8 -> cout [label=w_bfr_8 fontsize=8]
+	"n_05_ " -> "n_06_ " [color=red]
+	"n_06_ " -> bfr_9 [color=red]
+	bfr_9 -> bfr_11 [color=red]
+	bfr_11 -> "n_08_ " [color=red]
+	"n_08_ " -> "n_09_ " [color=red]
+	"n_09_ " -> bfr_1 [color=red]
+	bfr_1 -> bbbb_ [color=red]
+	bbbb_ -> bfr_2 [color=red]
+	bfr_2 -> bfr_4 [color=red]
+	bfr_4 -> bfr_7 [color=red]
+	"n_07_ " -> bfr_0 [color=blue]
+	bfr_0 -> bfr_10 [color=blue]
+	bfr_10 -> bfr_12 [color=blue]
+	bfr_12 -> "n_10_ " [color=blue]
+	"n_10_ " -> "n_11_ " [color=blue]
+	"n_11_ " -> bfr_3 [color=blue]
+	bfr_3 -> bfr_6 [color=blue]
+	bfr_6 -> bfr_5 [color=blue]
+	bfr_5 -> bfr_8 [color=blue]
+	"n_05_ " -> "n_06_ " [color=green]
+	"n_06_ " -> bfr_9 [color=green]
+	bfr_9 -> bfr_11 [color=green]
+	bfr_11 -> "n_07_ " [color=green]
+	"n_07_ " -> bfr_0 [color=green]
+	bfr_0 -> bfr_10 [color=green]
+	bfr_10 -> bfr_12 [color=green]
+	bfr_12 -> "n_08_ " [color=green]
+	"n_08_ " -> "n_09_ " [color=green]
+	"n_09_ " -> bfr_1 [color=green]
+	bfr_1 -> "n_10_ " [color=green]
+	"n_10_ " -> "n_11_ " [color=green]
+	"n_11_ " -> bbbb_ [color=green]
+	bbbb_ -> bfr_2 [color=green]
+	bfr_2 -> bfr_3 [color=green]
+	bfr_3 -> bfr_6 [color=green]
+	bfr_6 -> bfr_4 [color=green]
+	bfr_4 -> bfr_7 [color=green]
+	bfr_7 -> bfr_5 [color=green]
+	bfr_5 -> bfr_8 [color=green]
+}
